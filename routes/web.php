@@ -15,4 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 //获取用户信息
-Route::post('api/u','UserApiController@userInfo');
+Route::get('curl/test','UserApiController@curl');
+//POST
+Route::get('curl/curlpost','UserApiController@curlPost');
+//POST
+Route::get('curl/curlpost1','UserApiController@curlPost1');
+//POST
+Route::get('curl/curlpost2','UserApiController@curlPost2');
+
+Route::get('test/mid','UserApiController@testmid')->middleware('request');
