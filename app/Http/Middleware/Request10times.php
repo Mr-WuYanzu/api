@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Redis;
 
-
 class Request10times
 {
     /**
@@ -17,13 +16,14 @@ class Request10times
      */
     public function handle($request, Closure $next)
     {
+
         $key='request10times';
         $num=Redis::get($key);
         if($num>10){
             die('访问频繁');
         }
         Redis::incr($key);
-        Redis::expire($key,60);
+        Redis::expire($key,2);
         return $next($request);
     }
 }
