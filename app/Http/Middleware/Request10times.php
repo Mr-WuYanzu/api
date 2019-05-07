@@ -16,8 +16,7 @@ class Request10times
      */
     public function handle($request, Closure $next)
     {
-
-        $key='request10times';
+        $key='request10times:ip:'.$_SERVER['REMOTE_ADDR'].':token:'.$request->input('token');
         $num=Redis::get($key);
         if($num>10){
             die('访问频繁');

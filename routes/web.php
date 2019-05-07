@@ -22,5 +22,11 @@ Route::get('curl/curlpost','UserApiController@curlPost');
 Route::get('curl/curlpost1','UserApiController@curlPost1');
 //POST
 Route::get('curl/curlpost2','UserApiController@curlPost2');
-
+//测试中间件
 Route::get('test/mid','UserApiController@testmid')->middleware('request');
+//用户注册
+Route::post('test/reg','user\UserController@reg');
+//用户登录
+Route::post('test/login','user\UserController@login');
+//用户中心
+Route::get('test/my','user\UserController@My')->middleware(['checklogin','request']);
